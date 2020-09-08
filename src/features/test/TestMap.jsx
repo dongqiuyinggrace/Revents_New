@@ -18,7 +18,7 @@ const TestMap = ({latLng}) => {
     // Important! Always set the container height explicitly
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'Key' }}
+        bootstrapURLKeys={{ key: 'AIzaSyAATuq37QLJUna4rsLjnKGy4pKLfGOfChA' }}
         center={defaultProps.center}
         zoom={defaultProps.zoom}
       >

@@ -1,18 +1,35 @@
+import { asyncActionStart, asyncActionFinish, asyncActionError } from './../../app/async/asyncReducer';
+import { delay } from './../../app/common/util/util';
+
 export const NUMBER_INCREMENT = 'NUMBER_INCREMENT';
 export const NUMBER_DECREMENT = 'NUMBER_DECREMENT';
 
 export const increment = (amount) => {
-    return {
-      type: NUMBER_INCREMENT,
-      payload: amount
-    };
+    return async dispatch => {
+      dispatch(asyncActionStart());
+      try {
+        await delay(1000);
+        dispatch({type: NUMBER_INCREMENT, payload: amount});
+        dispatch(asyncActionFinish());
+
+      } catch(error) {
+        dispatch(asyncActionError(error));
+      }
+      
+    }
   };
   
   export const decrement = (amount) => {
-    return {
-      type: NUMBER_DECREMENT,
-      payload: amount
-    };
+    return async dispatch => {
+      dispatch(asyncActionStart());
+      try {
+        await delay(1000);
+        dispatch({type: NUMBER_DECREMENT, payload: amount});
+        dispatch(asyncActionFinish());
+      } catch(error) {
+        dispatch(asyncActionError(error));
+      }
+    }
   };
 
 const initialState = {
